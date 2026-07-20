@@ -2,7 +2,10 @@
   "format_version": "1.21.80",
   "minecraft:block": {
     "description": {
-      "identifier": "demo:die"
+      "identifier": "rluckblock:block",
+      "menu_category": {
+        "category": "construction"
+      }
     },
     "components": {
       "minecraft:geometry": "minecraft:geometry.full_block",

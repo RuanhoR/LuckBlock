@@ -1,10 +1,15 @@
 <Event @before>
   playerBreakBlock = onPlayerBreakBlock
+  playerPlaceBlock = onPlayerPlaceBlock
 </Event>
 <script lang="ts">
-import { PlayerBreakBlockAfterEvent, system } from "@minecraft/server";
+import { PlayerBreakBlockAfterEvent, PlayerPlaceBlockAfterEvent, system } from "@minecraft/server";
 import { LuckBlockCore } from "./core/luckBlock";
+import { luckBlockTypeId } from "./config";
 export async function onPlayerBreakBlock(event: PlayerBreakBlockAfterEvent) {
-  if (event.block.typeId == "demo:die") system.run(() => LuckBlockCore.onBreak(event.block));
+  if (event.block.typeId == luckBlockTypeId) system.run(() => LuckBlockCore.onBreak(event.block, event.player));
+}
+export async function onPlayerPlaceBlock(event: PlayerPlaceBlockAfterEvent) {
+
 }
 </script>

@@ -1,0 +1,10 @@
+<Event @before>
+  playerBreakBlock = onPlayerBreakBlock
+</Event>
+<script lang="ts">
+import { PlayerBreakBlockAfterEvent, system } from "@minecraft/server";
+import { LuckBlockCore } from "./core/luckBlock";
+export async function onPlayerBreakBlock(event: PlayerBreakBlockAfterEvent) {
+  if (event.block.typeId == "demo:die") system.run(() => LuckBlockCore.onBreak(event.block));
+}
+</script>

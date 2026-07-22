@@ -1,4 +1,11 @@
 <script lang="ts">
+import { registryCommand } from "@mbler/mcx";
+import { LuckBlockCore } from "./core/luckBlock";
 import event from "./event.mcx";
+import { debugCommand } from "./command/vdebug";
+import { giveLuckBlockCommand } from "./command/giveluckblock";
 event.subscribe();
+LuckBlockCore.startLoop();
+registryCommand(debugCommand);
+registryCommand(giveLuckBlockCommand)
 </script>

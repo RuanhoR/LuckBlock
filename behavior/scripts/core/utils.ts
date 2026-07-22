@@ -55,8 +55,8 @@ export function selectEvent(
 ) => Promise<void> | void {
   const clampedLuck = Math.max(-100, Math.min(100, currenyLuck));
   const normalized = clampedLuck / 100;
-  const goodProbability = 1 / (1 + Math.exp(-normalized * 4)) + 0.2;
-  if (Math.random() + new Date().getSeconds() / 1000 < goodProbability) {
+  const goodProbability = 1 / (1 + Math.exp(-normalized * 4));
+  if (Math.random() < goodProbability) {
     const randomIndex = Math.floor(Math.random() * luckEvents.length);
     return luckEvents[randomIndex];
   } else {

@@ -1,4 +1,10 @@
-import { createApp } from "@mbler/mcx";
+import { createApp, registryCommand } from "@mbler/mcx";
 import app from "./app.mcx";
 import { world } from "@minecraft/server";
+import { debugCommand } from "./command/vdebug";
+import { giveLuckBlockCommand } from "./command/giveluckblock";
+import { LuckBlockCore } from "./core/luckBlock";
 createApp(app).mount(world);
+registryCommand(debugCommand);
+registryCommand(giveLuckBlockCommand);
+LuckBlockCore.startLoop();

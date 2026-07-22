@@ -31,10 +31,28 @@ export function spawnItem(
   }
 }
 export function selectEvent(
-  luckEvents: ((block: Block, player: Player) => Promise<void> | void)[],
-  badEvents: ((block: Block, player: Player) => Promise<void> | void)[],
+  luckEvents: ((
+    block: {
+      dimension: Dimension;
+      location: Vector3;
+    },
+    player: Player,
+  ) => Promise<void> | void)[],
+  badEvents: ((
+    block: {
+      dimension: Dimension;
+      location: Vector3;
+    },
+    player: Player,
+  ) => Promise<void> | void)[],
   currenyLuck: number,
-): (block: Block, player: Player) => Promise<void> | void {
+): (
+  block: {
+    dimension: Dimension;
+    location: Vector3;
+  },
+  player: Player,
+) => Promise<void> | void {
   const clampedLuck = Math.max(-100, Math.min(100, currenyLuck));
   const normalized = clampedLuck / 100;
   const goodProbability = 1 / (1 + Math.exp(-normalized * 4)) + 0.2;

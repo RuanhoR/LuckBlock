@@ -1,13 +1,40 @@
-import { system, world, type Block, type Player } from "@minecraft/server";
+import {
+  Dimension,
+  system,
+  world,
+  type Player,
+  type Vector3,
+} from "@minecraft/server";
 import { randomNum, spawnItem } from "../utils";
-import { setBlock, summonEntity, fillArea, fillSquare, playerEffect, clearInventory, giveItem, setHelmet, clearMainhand } from "./utils";
+import {
+  setBlock,
+  summonEntity,
+  fillArea,
+  fillSquare,
+  playerEffect,
+  clearInventory,
+  giveItem,
+  setHelmet,
+  clearMainhand,
+} from "./utils";
 
-const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
+const badEvents: ((
+  block: {
+    dimension: Dimension;
+    location: Vector3;
+  },
+  player: Player,
+) => Promise<void> | void)[] = [
   // 1. Summon zombie
-  (b) => summonEntity(b.dimension, b.location, "minecraft:zombie", randomNum(1, 3)),
+  (b) =>
+    summonEntity(b.dimension, b.location, "minecraft:zombie", randomNum(1, 3)),
   // 2. Obsidian water room trap (structure)
   (b, p) => {
-    world.structureManager.place("luckblock_obsidian_waterplace", b.dimension, b.location);
+    world.structureManager.place(
+      "luckblock_obsidian_waterplace",
+      b.dimension,
+      b.location,
+    );
     p.teleport({
       x: b.location.x + 1,
       y: b.location.y,
@@ -29,9 +56,17 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   // 5. Falling anvil from above
   (b) => {
     for (let y = 1; y < 10; y++) {
-      setBlock(b.dimension, { x: b.location.x, y: b.location.y + y, z: b.location.z }, "minecraft:air");
+      setBlock(
+        b.dimension,
+        { x: b.location.x, y: b.location.y + y, z: b.location.z },
+        "minecraft:air",
+      );
     }
-    setBlock(b.dimension, { x: b.location.x, y: b.location.y + 10, z: b.location.z }, "minecraft:anvil");
+    setBlock(
+      b.dimension,
+      { x: b.location.x, y: b.location.y + 10, z: b.location.z },
+      "minecraft:anvil",
+    );
   },
   // 6. Skeleton squad (3)
   (b) => summonEntity(b.dimension, b.location, "minecraft:skeleton", 3),
@@ -43,7 +78,8 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   // 8. Cobweb trap (5x5)
   (b) => fillArea(b.dimension, b.location, 2, "minecraft:web"),
   // 9. Creeper
-  (b) => summonEntity(b.dimension, b.location, "minecraft:creeper", randomNum(1, 2)),
+  (b) =>
+    summonEntity(b.dimension, b.location, "minecraft:creeper", randomNum(1, 2)),
   // 10. Blindness + slowness (30s)
   (b, p) => {
     playerEffect(p, "blindness", 30, 0);
@@ -93,7 +129,13 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   // 24. Clear main hand
   (b, p) => clearMainhand(p),
   // 25. Silverfish swarm (5-8)
-  (b) => summonEntity(b.dimension, b.location, "minecraft:silverfish", randomNum(5, 8)),
+  (b) =>
+    summonEntity(
+      b.dimension,
+      b.location,
+      "minecraft:silverfish",
+      randomNum(5, 8),
+    ),
   // 26. Wither effect (10s)
   (b, p) => playerEffect(p, "wither", 10, 1),
   // 27. Zombie pigman (2)
@@ -140,7 +182,8 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
     }
   },
   // 34. Slime rain
-  (b) => summonEntity(b.dimension, b.location, "minecraft:slime", randomNum(6, 10)),
+  (b) =>
+    summonEntity(b.dimension, b.location, "minecraft:slime", randomNum(6, 10)),
   // 35. Arrow trap (dispensers + arrows)
   (b) => {
     for (let i = 0; i < 4; i++) {
@@ -154,10 +197,19 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   (b) => {
     for (let x = -1; x <= 1; x++) {
       for (let z = -1; z <= 1; z++) {
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z }, "minecraft:netherrack");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z },
+          "minecraft:netherrack",
+        );
       }
     }
-    summonEntity(b.dimension, b.location, "minecraft:magma_cube", randomNum(3, 5));
+    summonEntity(
+      b.dimension,
+      b.location,
+      "minecraft:magma_cube",
+      randomNum(3, 5),
+    );
   },
   // 38. Bad omen + phantom
   (b, p) => {
@@ -169,7 +221,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
     p.teleport({ x: b.location.x, y: b.location.y + 30, z: b.location.z });
     for (let x = -2; x <= 2; x++) {
       for (let z = -2; z <= 2; z++) {
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z }, "minecraft:air");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z },
+          "minecraft:air",
+        );
       }
     }
   },
@@ -203,7 +259,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
       for (let z = -2; z <= 2; z++) {
         if (x === -2 || x === 2 || z === -2 || z === 2) {
           for (let y = 0; y < 3; y++) {
-            setBlock(b.dimension, { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z }, "minecraft:cactus");
+            setBlock(
+              b.dimension,
+              { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z },
+              "minecraft:cactus",
+            );
           }
         }
       }
@@ -270,7 +330,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
     for (let y = 2; y < 8; y++) {
       for (let x = -1; x <= 1; x++) {
         for (let z = -1; z <= 1; z++) {
-          setBlock(b.dimension, { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z }, "minecraft:gravel");
+          setBlock(
+            b.dimension,
+            { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z },
+            "minecraft:gravel",
+          );
         }
       }
     }
@@ -279,7 +343,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   (b) => {
     for (let x = -2; x <= 2; x++) {
       for (let z = -2; z <= 2; z++) {
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y, z: b.location.z + z }, "minecraft:sweet_berry_bush");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y, z: b.location.z + z },
+          "minecraft:sweet_berry_bush",
+        );
       }
     }
   },
@@ -295,7 +363,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
     for (let y = 0; y > -5; y--) {
       for (let x = -1; x <= 1; x++) {
         for (let z = -1; z <= 1; z++) {
-          setBlock(b.dimension, { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z }, "minecraft:air");
+          setBlock(
+            b.dimension,
+            { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z },
+            "minecraft:air",
+          );
         }
       }
     }
@@ -304,11 +376,20 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   (b, p) => playerEffect(p, "poison", 30, 3),
   // 64. Vex surround (4 directions)
   (b) => {
-    const dirs = [{ x: 1, z: 0 }, { x: -1, z: 0 }, { x: 0, z: 1 }, { x: 0, z: -1 }];
+    const dirs = [
+      { x: 1, z: 0 },
+      { x: -1, z: 0 },
+      { x: 0, z: 1 },
+      { x: 0, z: -1 },
+    ];
     for (const d of dirs) {
       try {
-        b.dimension.spawnEntity("minecraft:vex", { x: b.location.x + d.x * 3, y: b.location.y + 1, z: b.location.z + d.z * 3 });
-      } catch (_) { }
+        b.dimension.spawnEntity("minecraft:vex", {
+          x: b.location.x + d.x * 3,
+          y: b.location.y + 1,
+          z: b.location.z + d.z * 3,
+        });
+      } catch (_) {}
     }
   },
   // 65. Zombie horse + skeleton trap
@@ -325,8 +406,12 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   (b) => {
     for (let i = 0; i < 3; i++) {
       try {
-        b.dimension.spawnEntity("minecraft:zombie", { x: b.location.x + randomNum(-2, 2), y: b.location.y, z: b.location.z + randomNum(-2, 2) });
-      } catch (_) { }
+        b.dimension.spawnEntity("minecraft:zombie", {
+          x: b.location.x + randomNum(-2, 2),
+          y: b.location.y,
+          z: b.location.z + randomNum(-2, 2),
+        });
+      } catch (_) {}
     }
   },
   // 68. Ravager + pillager raid
@@ -350,7 +435,11 @@ const badEvents: ((block: Block, player: Player) => Promise<void> | void)[] = [
   // 72. Mule + leather
   (b) => {
     summonEntity(b.dimension, b.location, "minecraft:mule", 2);
-    spawnItem([{ id: "leather", cout: randomNum(3, 6) }], b.location, b.dimension);
+    spawnItem(
+      [{ id: "leather", cout: randomNum(3, 6) }],
+      b.location,
+      b.dimension,
+    );
   },
   // 73. Piglin + crossbow
   (b) => summonEntity(b.dimension, b.location, "minecraft:piglin", 3),

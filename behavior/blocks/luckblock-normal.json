@@ -9,6 +9,7 @@
     },
     "components": {
       "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:loot": "loot_tables/luckblock/null.json",
       "minecraft:material_instances": {
         "north": {
           "texture": "luckblock"

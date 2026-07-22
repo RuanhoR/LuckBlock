@@ -1,6 +1,6 @@
 {
   "format_version": "1.19.30",
-  "demo:die": {
+  "rluckblock:block": {
     "sound": "stone"
-     }
+  }
 }

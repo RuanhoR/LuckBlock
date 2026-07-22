@@ -1,6 +1,6 @@
 {
-  "name": "Die",
-  "description": "Die",
+  "name": "@ruanhor/luckblock",
+  "description": "LuckBlock",
   "version": "0.0.1",
   "packageManager": "pnpm@11.0.0",
   "engines": {

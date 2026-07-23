@@ -1,1 +1,8 @@
 tile.rluckblock:block.name=LuckBlock
+sapi.form.lucknum.select_luckblock=Select a LuckBlock( Change LuckNum Form )
+sapi.form.lucknum.no_luckblock=§cYou don't have any LuckBlock in your inventory
+sapi.form.lucknum.select_material=Select a material (Rotten Flesh / Spider Eye / Gold Ingot / Diamond / Emerald)
+sapi.form.lucknum.no_material=§cYou don't have any valid material in your inventory
+sapi.form.lucknum.title=LuckNum Conversion
+sapi.form.lucknum.quantity=Quantity
+sapi.form.lucknum.slot=Slot：%s

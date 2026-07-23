@@ -20,5 +20,5 @@ export async function onPlayerPlaceBlock(event: PlayerPlaceBlockAfterEvent) {
     luckNum = parsed.num;
   }
   LuckBlockCore.addBlockLuckNumData(event.block.location, event.dimension, luckNum);
-}
+};
 </script>

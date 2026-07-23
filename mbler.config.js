@@ -5,10 +5,11 @@ import { defineConfig } from "mbler"
 export default defineConfig({
   // description: use in manifest generate
   description: 'LuckBlock',
+  displayName: "Luck Block",
   // mcVersion: work on ... mcbe version, e.g 1.26.32
   mcVersion: '1.26.31',
   // out code minfiy mode, support: "terser" | "esbuild | "oxc" | false , "terser" | "esbuild" need install on project
-  minify: 'oxc',
+  minify: "oxc",
   // out to game in dev(env.BUILD_MODULE != release)
   outGameOnDev: true,
   script: {

@@ -177,7 +177,7 @@ const badEvents: ((
       const item = cont.getItem(i);
       if (item) {
         b.dimension.spawnItem(item, b.location);
-        cont.setItem(i);
+        cont.setItem(i, undefined);
       }
     }
   },

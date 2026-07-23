@@ -1,0 +1,20 @@
+<Component>
+  <items>
+    <item id="luckapple.json">LuckApple</item>
+  </items>
+</Component>
+
+<script lang="ts">
+import { ItemComponent } from "@mbler/mcx-component"
+import LuckAppleIcon from "./assets/LuckApple.png"
+const LuckApple = new ItemComponent({
+  id: "rluckblock:apple",
+  components: {},
+  format: "1.21.0",
+  name: "Luck Apple"
+});
+LuckApple.setIcon(LuckAppleIcon);
+export {
+  LuckApple
+}
+</script>

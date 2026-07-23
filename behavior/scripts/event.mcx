@@ -1,11 +1,12 @@
 <Event @before>
   playerBreakBlock = onPlayerBreakBlock
   playerPlaceBlock = onPlayerPlaceBlock
+  McxExtendsBy = ./eventAfter.mcx
 </Event>
 <script lang="ts">
 import { PlayerBreakBlockAfterEvent, PlayerPlaceBlockAfterEvent, system } from "@minecraft/server";
 import { LuckBlockCore } from "./core/luckBlock";
-import { luckBlockTypeId } from "./config";
+import { luckBlockTypeId, luckAppleTypeId } from "./config";
 import { mainhand } from "./core/utils";
 export async function onPlayerBreakBlock(event: PlayerBreakBlockAfterEvent) {
   if (event.block.typeId == luckBlockTypeId) system.run(() => LuckBlockCore.onBreak(event.block, event.player));

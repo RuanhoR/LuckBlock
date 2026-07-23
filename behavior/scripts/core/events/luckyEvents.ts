@@ -780,6 +780,13 @@ const luckyEvents: ((
       b.dimension,
     );
   },
+  // 78. Luck Apples
+  (b) =>
+    spawnItem(
+      [{ id: "rluckblock:apple", cout: randomNum(1, 3) }],
+      b.location,
+      b.dimension,
+    ),
 ];
 
 export default luckyEvents;

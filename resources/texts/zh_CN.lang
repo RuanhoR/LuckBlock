@@ -1,4 +1,6 @@
 tile.rluckblock:block.name=幸运方块
+item.rluckblock:apple.name=幸运苹果
+item.rluckblock:apple=幸运苹果
 sapi.form.lucknum.slot=槽位：%s
 sapi.form.lucknum.select_luckblock=选择一个幸运方块（幸运值修改表单）
 sapi.form.lucknum.no_luckblock=§c你的背包里没有幸运方块

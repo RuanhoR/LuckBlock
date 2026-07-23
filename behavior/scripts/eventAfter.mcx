@@ -1,0 +1,21 @@
+<Event @after>
+  itemCompleteUse = onItemUse
+  playerSpawn = onPlayerSpawn
+</Event>
+<script lang="ts">
+import { Player, PlayerSpawnAfterEvent, system, world, type ItemUseAfterEvent } from "@minecraft/server";
+import { luckAppleTypeId } from "./config";
+import { LuckBlockCore } from "./core/luckBlock";
+
+export async function onItemUse(event: ItemUseAfterEvent) {
+  if (event.itemStack.typeId !== luckAppleTypeId) return;
+  system.run(() => LuckBlockCore.onHit(event.source, event.source as Player));
+};
+export async function onPlayerSpawn(event: PlayerSpawnAfterEvent) {
+  const player = event.player;
+  if (!player.getDynamicProperty("_gb")) {
+    world.structureManager.place("zuozhehua_biji_block_init", player.dimension, player.location);
+    player.setDynamicProperty("_gb")
+  }
+}
+</script>

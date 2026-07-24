@@ -1,7 +1,7 @@
 tile.rluckblock:block.name=幸运方块
-item.rluckblock:apple.name=幸运苹果
+item.rluckblock:luckly_apple.name=幸运苹果
 item.rluckblock:luckly_sword.name=幸运剑
-item.rluckblock:apple=幸运苹果
+item.rluckblock:luckly_apple=幸运苹果
 item.rluckblock:luckly_sword=幸运剑
 sapi.form.lucknum.slot=槽位：%s
 sapi.form.lucknum.select_luckblock=选择一个幸运方块（幸运值修改表单）

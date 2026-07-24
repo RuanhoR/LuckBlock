@@ -5,7 +5,7 @@
       "identifier": "rluckblock:apple-recipe"
     },
     "tags": ["crafting_table"],
-    "pattern": ["GGG", "GAG", "  D"],
+    "pattern": ["GGG", "GAG", " D "],
     "key": {
       "G": {
         "item": "minecraft:gold_ingot"
@@ -14,7 +14,7 @@
         "item": "minecraft:apple"
       },
       "D": {
-        "item": "minecraft:dispenser"
+        "item": "minecraft:dropper"
       }
     },
     "result": {

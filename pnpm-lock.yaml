@@ -19,8 +19,8 @@ importers:
         version: 2.2.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33))
     devDependencies:
       '@mbler/mcx-component':
-        specifier: 0.0.0-alpha.2
-        version: 0.0.0-alpha.2(@minecraft/vanilla-data@1.26.33)
+        specifier: 0.0.0-alpha.3
+        version: 0.0.0-alpha.3(@minecraft/server-ui@2.2.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33)))(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33))
       '@mbler/mcx-core':
         specifier: 0.1.3-rc.9
         version: 0.1.3-rc.9(@minecraft/server-ui@2.2.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33)))(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33))
@@ -96,6 +96,10 @@ packages:
 
   '@mbler/mcx-component@0.0.0-alpha.2':
     resolution: {integrity: sha512-94+CudsXyy2x1ryzHinvKKUUb6kTKhKBD1F9obThKfM1KdmpA9dwbt7Jmdq8pY2eOnemhFD3SG/bD/Dzi3sZng==}
+    engines: {node: '>=20'}
+
+  '@mbler/mcx-component@0.0.0-alpha.3':
+    resolution: {integrity: sha512-9SUl0bhGmTcraDszRh441T4WkfnLsN+LNO4jhzMrPAuXMaa/FoZ8X25d2xpIynvS+BKYTFgiTRCTsRx0andHYA==}
     engines: {node: '>=20'}
 
   '@mbler/mcx-core@0.1.2-rc.13':
@@ -685,6 +689,13 @@ snapshots:
       '@mbler/mcx-types': 0.0.4-rc.2(@minecraft/vanilla-data@1.26.33)
     transitivePeerDependencies:
       - '@minecraft/vanilla-data'
+
+  '@mbler/mcx-component@0.0.0-alpha.3(@minecraft/server-ui@2.2.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33)))(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33))':
+    dependencies:
+      '@mbler/mcx-types': 0.0.4-rc.5(@minecraft/server-ui@2.2.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33)))(@minecraft/server@2.9.0-beta.1.26.31-stable(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33))
+    transitivePeerDependencies:
+      - '@minecraft/server'
+      - '@minecraft/server-ui'
 
   '@mbler/mcx-core@0.1.2-rc.13(@minecraft/common@1.3.0)(@minecraft/vanilla-data@1.26.33)(rolldown@1.2.0)(rollup@4.59.0)':
     dependencies:

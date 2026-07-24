@@ -4,6 +4,7 @@ import {
   CustomCommandStatus,
   ItemStack,
   Player,
+  system,
 } from "@minecraft/server";
 import { luckBlockTypeId } from "../config";
 import { LuckBlockCore } from "../core/luckBlock";
@@ -31,13 +32,19 @@ giveLuckBlockCommand.action((origin, ...args) => {
       message: "Invaild Paramer",
     };
   }
-  const player = origin.sourceEntity as Player;
-  const item = new ItemStack(luckBlockTypeId);
-  item.setLore([
-    LuckBlockCore.LoreParser.generateLuckBlockLore({
-      type: luckNum > 0 ? "good" : "bad",
-      num: luckNum,
-    }),
-  ]);
-  player.addItem(item);
+  system.runTimeout(() => {
+    const player = origin.sourceEntity as Player;
+    const item = new ItemStack(luckBlockTypeId);
+    item.setLore([
+      LuckBlockCore.LoreParser.generateLuckBlockLore({
+        type: luckNum > 0 ? "good" : "bad",
+        num: luckNum,
+      }),
+    ]);
+    player.addItem(item);
+  }, 2);
+  return {
+    status: CustomCommandStatus.Success,
+    message: "Success",
+  };
 });

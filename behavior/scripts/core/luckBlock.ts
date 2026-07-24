@@ -30,7 +30,29 @@ export class LuckBlockCore {
   }
   public static async onHit(entity: Entity, player: Player) {
     const exec = selectEvent(luckyEvents, badEvents, 0);
-    await exec(entity, player);
+    let data: {
+      location: Vector3;
+      dimension: Dimension;
+    };
+    try {
+      data = {
+        dimension: entity.dimension,
+        location: entity.location,
+      };
+    } catch {
+      try {
+        data = {
+          dimension: player.dimension,
+          location: entity.location,
+        };
+      } catch {
+        data = {
+          dimension: player.dimension,
+          location: player.location,
+        };
+      }
+    }
+    await exec(data, player);
   }
   public static LoreParser = LoreParser;
   public static addBlockLuckNumData(

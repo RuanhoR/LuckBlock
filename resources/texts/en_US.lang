@@ -1,5 +1,8 @@
-tile.rluckblock:block.name=LuckBlock
-item.rluckblock:apple.name=Luck Apple
+tile.rluckblock:block.name=Luckly Block
+item.rluckblock:apple.name=Luckly Apple
+item.rluckblock:luckly_sword.name=Luckly Sword
+item.rluckblock:apple=Luckly Apple
+item.rluckblock:luckly_sword=Luckly Sword
 sapi.form.lucknum.select_luckblock=Select a LuckBlock( Change LuckNum Form )
 sapi.form.lucknum.no_luckblock=§cYou don't have any LuckBlock in your inventory
 sapi.form.lucknum.select_material=Select a material (Rotten Flesh / Spider Eye / Gold Ingot / Diamond / Emerald)

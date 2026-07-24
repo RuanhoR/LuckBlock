@@ -1,5 +1,7 @@
 import {
   Dimension,
+  EquipmentSlot,
+  ItemStack,
   system,
   world,
   type Player,
@@ -452,6 +454,120 @@ const badEvents: ((
   (b, p) => {
     summonEntity(b.dimension, b.location, "minecraft:elder_guardian", 1);
     playerEffect(p, "mining_fatigue", 120, 4);
+  },
+  // 76. Wither skeleton
+  (b) => summonEntity(b.dimension, b.location, "minecraft:wither_skeleton", randomNum(1, 2)),
+  // 77. Anvil trap
+  (b) => {
+    for (let y = 1; y <= 5; y++)
+      setBlock(b.dimension, { x: b.location.x, y: b.location.y + y, z: b.location.z }, "minecraft:anvil");
+  },
+  // 78. Weakness bomb
+  (b, p) => playerEffect(p, "weakness", 60, 2),
+  // 79. Silverfish swarm
+  (b) => summonEntity(b.dimension, b.location, "minecraft:silverfish", randomNum(8, 12)),
+  // 80. Sinkhole — drop gravel
+  (b) => {
+    for (let y = 1; y <= 8; y++)
+      setBlock(b.dimension, { x: b.location.x, y: b.location.y + y, z: b.location.z }, "minecraft:gravel");
+  },
+  // 81. Poison + hunger
+  (b, p) => {
+    playerEffect(p, "poison", 15, 1);
+    playerEffect(p, "hunger", 30, 2);
+  },
+  // 82. Vex onslaught
+  (b) => summonEntity(b.dimension, b.location, "minecraft:vex", randomNum(3, 5)),
+  // 83. Fire ring
+  (b) => {
+    for (let x = -2; x <= 2; x++)
+      for (let z = -2; z <= 2; z++)
+        if (Math.abs(x) === 2 || Math.abs(z) === 2)
+          setBlock(b.dimension, { x: b.location.x + x, y: b.location.y, z: b.location.z + z }, "minecraft:fire");
+  },
+  // 84. Nausea + blindness
+  (b, p) => {
+    playerEffect(p, "nausea", 30, 0);
+    playerEffect(p, "blindness", 30, 0);
+  },
+  // 85. Armored zombies
+  (b) => {
+    for (let i = 0; i < 3; i++) {
+      const z = b.dimension.spawnEntity("minecraft:zombie", b.location);
+      z?.getComponent("equippable")?.getEquipmentSlot(EquipmentSlot.Mainhand).setItem(new ItemStack("minecraft:iron_sword"));
+    }
+  },
+  // 86. Lava rain
+  (b) => {
+    for (let x = -2; x <= 2; x++)
+      for (let z = -2; z <= 2; z++)
+        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y + 5, z: b.location.z + z }, "minecraft:lava");
+  },
+  // 87. Strip armor
+  (b, p) => {
+    const c = p.getComponent("equippable");
+    if (!c) return;
+    c.getEquipmentSlot(EquipmentSlot.Head).setItem(undefined);
+    c.getEquipmentSlot(EquipmentSlot.Chest).setItem(undefined);
+    c.getEquipmentSlot(EquipmentSlot.Legs).setItem(undefined);
+    c.getEquipmentSlot(EquipmentSlot.Feet).setItem(undefined);
+  },
+  // 88. Ravager
+  (b) => summonEntity(b.dimension, b.location, "minecraft:ravager", 1),
+  // 89. Wither + slowness
+  (b, p) => {
+    playerEffect(p, "wither", 20, 1);
+    playerEffect(p, "slowness", 20, 2);
+  },
+  // 90. Glass cage
+  (b, p) => {
+    for (let x = -1; x <= 1; x++)
+      for (let z = -1; z <= 1; z++)
+        for (let y = 0; y <= 3; y++)
+          if (x !== 0 || z !== 0 || y < 3)
+            setBlock(b.dimension, { x: b.location.x + x, y: b.location.y + y, z: b.location.z + z }, "minecraft:glass");
+    p.teleport({ x: b.location.x, y: b.location.y + 1, z: b.location.z });
+  },
+  // 91. Skeleton trap
+  (b) => {
+    for (let i = 0; i < 4; i++)
+      b.dimension.spawnEntity("minecraft:skeleton_horse", { x: b.location.x + randomNum(-2, 2), y: b.location.y, z: b.location.z + randomNum(-2, 2) });
+  },
+  // 92. Clear inventory
+  (b, p) => clearInventory(p),
+  // 93. Blindness + slowness
+  (b, p) => {
+    playerEffect(p, "blindness", 60, 0);
+    playerEffect(p, "slowness", 60, 3);
+  },
+  // 94. Bee attack
+  (b) => summonEntity(b.dimension, b.location, "minecraft:bee", randomNum(6, 10)),
+  // 95. Creeper surprise
+  (b) => summonEntity(b.dimension, b.location, "minecraft:creeper", randomNum(2, 3)),
+  // 96. Cobweb + blindness
+  (b, p) => {
+    fillSquare(b.dimension, b.location, 2, 0, "minecraft:cobweb");
+    playerEffect(p, "blindness", 20, 0);
+  },
+  // 97. Zombie villager swarm
+  (b) => summonEntity(b.dimension, b.location, "minecraft:zombie_villager", randomNum(4, 6)),
+  // 98. Drop mainhand item
+  (b, p) => clearMainhand(p),
+  // 99. Spore trap — huge mushroom + lingering poison
+  (b, p) => {
+    setBlock(b.dimension, b.location, "minecraft:brown_mushroom_block");
+    setBlock(b.dimension, { x: b.location.x, y: b.location.y + 1, z: b.location.z }, "minecraft:brown_mushroom_block");
+    setBlock(b.dimension, { x: b.location.x, y: b.location.y + 2, z: b.location.z }, "minecraft:brown_mushroom_block");
+    setBlock(b.dimension, { x: b.location.x, y: b.location.y + 3, z: b.location.z }, "minecraft:brown_mushroom_block");
+    playerEffect(p, "poison", 10, 2);
+  },
+  // 100. Evoker fangs
+  (b) => {
+    b.dimension.spawnEntity("minecraft:evocation_fang" as any, b.location);
+    b.dimension.spawnEntity("minecraft:evocation_fang" as any, { x: b.location.x + 1, y: b.location.y, z: b.location.z });
+    b.dimension.spawnEntity("minecraft:evocation_fang" as any, { x: b.location.x - 1, y: b.location.y, z: b.location.z });
+    b.dimension.spawnEntity("minecraft:evocation_fang" as any, { x: b.location.x, y: b.location.y, z: b.location.z + 1 });
+    b.dimension.spawnEntity("minecraft:evocation_fang" as any, { x: b.location.x, y: b.location.y, z: b.location.z - 1 });
   },
 ];
 

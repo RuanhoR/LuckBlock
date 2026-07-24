@@ -1,7 +1,7 @@
 import { createApp } from "@mbler/mcx";
 import app from "./app.mcx";
 import { world } from "@minecraft/server";
-import "./LuckApple.mcx";
+import "./DefineItems.mcx";
 import { version } from "./config";
 import { registryCommand } from "@mbler/mcx";
 import { LuckBlockCore } from "./core/luckBlock";

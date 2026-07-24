@@ -1,5 +1,6 @@
 import {
   Block,
+  EnchantmentType,
   EntityComponentTypes,
   EquipmentSlot,
   ItemStack,
@@ -18,6 +19,10 @@ interface itemDesc {
   name?: string;
   id: string;
   cout?: number;
+  ench?: {
+    id: string;
+    level: number;
+  }[];
 }
 export function spawnItem(
   itemArr: itemDesc[],
@@ -27,6 +32,17 @@ export function spawnItem(
   for (const i of itemArr) {
     const item = new ItemStack(i.id, i.cout || 1);
     if (i.name) item.nameTag = i.name;
+    if (i.ench) {
+      const enchd = item.getComponent("enchantable");
+      if (enchd) {
+        for (const enchItem of i.ench) {
+          enchd.addEnchantment({
+            level: enchItem.level,
+            type: new EnchantmentType(enchItem.id),
+          });
+        }
+      }
+    }
     dim.spawnItem(item, location);
   }
 }

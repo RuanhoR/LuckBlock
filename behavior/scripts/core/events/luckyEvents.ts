@@ -820,16 +820,33 @@ const luckyEvents: ((
   // 80. Music disks
   (b) => {
     const disks = [
-      "music_disc_13", "music_disc_cat", "music_disc_blocks", "music_disc_chirp",
-      "music_disc_far", "music_disc_mall", "music_disc_mellohi", "music_disc_stal",
-      "music_disc_strad", "music_disc_ward", "music_disc_11", "music_disc_wait",
+      "music_disc_13",
+      "music_disc_cat",
+      "music_disc_blocks",
+      "music_disc_chirp",
+      "music_disc_far",
+      "music_disc_mall",
+      "music_disc_mellohi",
+      "music_disc_stal",
+      "music_disc_strad",
+      "music_disc_ward",
+      "music_disc_11",
+      "music_disc_wait",
     ];
-    spawnItem([{ id: pickRandomItem(disks), cout: 1 }], b.location, b.dimension);
+    spawnItem(
+      [{ id: pickRandomItem(disks), cout: 1 }],
+      b.location,
+      b.dimension,
+    );
   },
   // 81. Bee haven
   (b) => {
     summonEntity(b.dimension, b.location, "minecraft:bee", 3);
-    setBlock(b.dimension, { x: b.location.x, y: b.location.y + 1, z: b.location.z }, "minecraft:bee_nest");
+    setBlock(
+      b.dimension,
+      { x: b.location.x, y: b.location.y + 1, z: b.location.z },
+      "minecraft:bee_nest",
+    );
   },
   // 82. Long lasting resistance + regen
   (b, p) => {
@@ -837,34 +854,65 @@ const luckyEvents: ((
     playerEffect(p, "regeneration", 120, 1);
   },
   // 83. Emerald block pile
-  (b) => spawnItem([{ id: "emerald_block", cout: randomNum(8, 16) }], b.location, b.dimension),
+  (b) =>
+    spawnItem(
+      [{ id: "emerald_block", cout: randomNum(8, 16) }],
+      b.location,
+      b.dimension,
+    ),
   // 84. Snowman army
-  (b) => summonEntity(b.dimension, b.location, "minecraft:snow_golem", randomNum(4, 6)),
+  (b) =>
+    summonEntity(
+      b.dimension,
+      b.location,
+      "minecraft:snow_golem",
+      randomNum(4, 6),
+    ),
   // 85. End rod decoration
   (b) => {
     for (let x = -2; x <= 2; x++)
       for (let z = -2; z <= 2; z++)
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y, z: b.location.z + z }, "minecraft:end_rod");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y, z: b.location.z + z },
+          "minecraft:end_rod",
+        );
   },
   // 86. Extra luck apple
-  (b) => spawnItem([{ id: "rluckblock:apple", cout: 1 }], b.location, b.dimension),
+  (b) =>
+    spawnItem(
+      [{ id: "rluckblock:luckly_apple", cout: 1 }],
+      b.location,
+      b.dimension,
+    ),
   // 87. Feast
-  (b) => spawnItem(
-    [
-      { id: "cooked_beef", cout: randomNum(16, 32) },
-      { id: "cooked_porkchop", cout: randomNum(16, 32) },
-      { id: "cooked_chicken", cout: randomNum(16, 32) },
-    ],
-    b.location, b.dimension,
-  ),
+  (b) =>
+    spawnItem(
+      [
+        { id: "cooked_beef", cout: randomNum(16, 32) },
+        { id: "cooked_porkchop", cout: randomNum(16, 32) },
+        { id: "cooked_chicken", cout: randomNum(16, 32) },
+      ],
+      b.location,
+      b.dimension,
+    ),
   // 88. Pumpkin patch
   (b) => {
     for (let x = -2; x <= 2; x++)
       for (let z = -2; z <= 2; z++)
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y, z: b.location.z + z }, "minecraft:pumpkin");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y, z: b.location.z + z },
+          "minecraft:pumpkin",
+        );
   },
   // 89. Fireworks stash
-  (b) => spawnItem([{ id: "firework_rocket", cout: randomNum(16, 32) }], b.location, b.dimension),
+  (b) =>
+    spawnItem(
+      [{ id: "firework_rocket", cout: randomNum(16, 32) }],
+      b.location,
+      b.dimension,
+    ),
   // 90. Haste + speed boost
   (b, p) => {
     playerEffect(p, "haste", 60, 2);
@@ -873,45 +921,103 @@ const luckyEvents: ((
   // 91. Scaffolding tower
   (b) => {
     for (let y = 1; y <= 10; y++)
-      setBlock(b.dimension, { x: b.location.x, y: b.location.y + y, z: b.location.z }, "minecraft:scaffolding");
+      setBlock(
+        b.dimension,
+        { x: b.location.x, y: b.location.y + y, z: b.location.z },
+        "minecraft:scaffolding",
+      );
   },
   // 92. Bone meal stack
-  (b) => spawnItem([{ id: "bone_meal", cout: randomNum(32, 64) }], b.location, b.dimension),
+  (b) =>
+    spawnItem(
+      [{ id: "bone_meal", cout: randomNum(32, 64) }],
+      b.location,
+      b.dimension,
+    ),
   // 93. Grass floor
   (b) => {
     for (let x = -4; x <= 4; x++)
       for (let z = -4; z <= 4; z++)
-        setBlock(b.dimension, { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z }, "minecraft:grass_block");
+        setBlock(
+          b.dimension,
+          { x: b.location.x + x, y: b.location.y - 1, z: b.location.z + z },
+          "minecraft:grass_block",
+        );
   },
   // 94. Parrot party
-  (b) => summonEntity(b.dimension, b.location, "minecraft:parrot", randomNum(4, 6)),
+  (b) =>
+    summonEntity(b.dimension, b.location, "minecraft:parrot", randomNum(4, 6)),
   // 95. Enchanted tool set
-  (b) => spawnItem(
-    [
-      { id: "diamond_pickaxe", cout: 1, ench: [{ id: "efficiency", level: 4 }, { id: "unbreaking", level: 3 }] },
-      { id: "diamond_axe", cout: 1, ench: [{ id: "efficiency", level: 4 }, { id: "unbreaking", level: 3 }] },
-    ],
-    b.location, b.dimension,
-  ),
+  (b) =>
+    spawnItem(
+      [
+        {
+          id: "diamond_pickaxe",
+          cout: 1,
+          ench: [
+            { id: "efficiency", level: 4 },
+            { id: "unbreaking", level: 3 },
+          ],
+        },
+        {
+          id: "diamond_axe",
+          cout: 1,
+          ench: [
+            { id: "efficiency", level: 4 },
+            { id: "unbreaking", level: 3 },
+          ],
+        },
+      ],
+      b.location,
+      b.dimension,
+    ),
   // 96. Flower bundle
   (b) => {
-    const flowers = ["poppy", "dandelion", "blue_orchid", "allium", "azure_bluet", "red_tulip", "oxeye_daisy", "cornflower", "lily_of_the_valley"];
-    const items = flowers.map(f => ({ id: f, cout: randomNum(2, 4) }));
+    const flowers = [
+      "poppy",
+      "dandelion",
+      "blue_orchid",
+      "allium",
+      "azure_bluet",
+      "red_tulip",
+      "oxeye_daisy",
+      "cornflower",
+      "lily_of_the_valley",
+    ];
+    const items = flowers.map((f) => ({ id: f, cout: randomNum(2, 4) }));
     spawnItem(items, b.location, b.dimension);
   },
   // 97. Shield + iron
-  (b) => spawnItem(
-    [
-      { id: "shield", cout: 1 },
-      { id: "iron_ingot", cout: randomNum(16, 32) },
-    ],
-    b.location, b.dimension,
-  ),
+  (b) =>
+    spawnItem(
+      [
+        { id: "shield", cout: 1 },
+        { id: "iron_ingot", cout: randomNum(16, 32) },
+      ],
+      b.location,
+      b.dimension,
+    ),
   // 98. Golden carrot feast
-  (b) => spawnItem([{ id: "golden_carrot", cout: randomNum(16, 32) }], b.location, b.dimension),
+  (b) =>
+    spawnItem(
+      [{ id: "golden_carrot", cout: randomNum(16, 32) }],
+      b.location,
+      b.dimension,
+    ),
   // 99. All effects 60s
   (b, p) => {
-    const effects = ["speed", "haste", "strength", "regeneration", "resistance", "fire_resistance", "water_breathing", "night_vision", "jump_boost", "absorption"];
+    const effects = [
+      "speed",
+      "haste",
+      "strength",
+      "regeneration",
+      "resistance",
+      "fire_resistance",
+      "water_breathing",
+      "night_vision",
+      "jump_boost",
+      "absorption",
+    ];
     for (const e of effects) playerEffect(p, e, 60, 0);
   },
   // 100. Diamond block + XP

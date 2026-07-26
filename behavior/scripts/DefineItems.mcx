@@ -7,17 +7,15 @@
 
 <script lang="ts">
 import { EnchantableSlotEnum } from "@mbler/mcx-component"
-import Component from "@mbler/mcx-component"
+import { ItemComponent } from "@mbler/mcx-component"
 import LuckAppleIcon from "./assets/LuckApple.png";
 import LucklySwordIcon from "./assets/LucklySword.png"
-// @ts-ignore name via lang file
-const LuckApple = new Component.item({
+const LuckApple = new ItemComponent({
   id: "rluckblock:luckly_apple",
   components: {},
   format: "1.21.0",
 });
-// @ts-ignore name via lang file
-const LuckSword = new Component.item({
+const LuckSword = new ItemComponent({
   id: "rluckblock:luckly_sword",
   components: {},
   format: "1.21.0"

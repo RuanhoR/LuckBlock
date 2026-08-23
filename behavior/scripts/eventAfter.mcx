@@ -1,7 +1,7 @@
 <Event @after>
   itemCompleteUse = onItemUse
   playerSpawn = onPlayerSpawn
-    entityHitEntity = onEntityHitEntity
+  entityHitEntity = onEntityHitEntity
 </Event>
 <script lang="ts">
 import { EntityHitEntityAfterEvent, Player, PlayerSpawnAfterEvent, system, world, type ItemUseAfterEvent } from "@minecraft/server";

@@ -5,8 +5,6 @@ Minecraft Bedrock addon (Luck Block). Built with [mbler](https://github.com/Ruan
 ## ⚠️ 包管理器：只用 pnpm
 
 **禁止 `npm run ...` / `npx <tool>`。** 全局 npm 里装过一个坏掉的 mbler，
-npm/npx 会把 bin 解析到
-`C:\Users\Administrator\AppData\Roaming\npm\node_modules\mbler\...`
 导致 `Cannot find module` 类错误；pnpm 走项目内 `node_modules/.bin`，一切正常。
 
 ```bash

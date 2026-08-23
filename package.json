@@ -20,8 +20,9 @@
     "@ojaang/be-vanilla-iddata": "1.26.40-rc.1"
   },
   "devDependencies": {
-    "@mbler/mcx-component": "0.0.1",
-    "@mbler/mcx-core": "0.1.3-rc.10",
+    "@mbler/mcx-component": "0.0.3-rc.1",
+    "mcx-tsc": "0.0.2-rc.2",
+    "@mbler/mcx-core": "0.1.3-rc.16",
     "cross-env": "^10.1.0",
     "mbler": "0.2.14-rc.0",
     "rolldown": "^1.1.0"

@@ -14,6 +14,7 @@ export async function onItemUse(event: ItemUseAfterEvent) {
   system.run(() => LuckBlockCore.onHit(event.source, event.source as Player));
 };
 export async function onPlayerSpawn(event: PlayerSpawnAfterEvent) {
+  if (!event.initialSpawn) return;
   const player = event.player;
   if (!player.getDynamicProperty("_gb")) {
     world.structureManager.place("zuozhehua_biji_block_init", player.dimension, player.location);

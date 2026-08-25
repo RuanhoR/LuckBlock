@@ -793,7 +793,7 @@ const luckyEvents: ((
   // 78. Luck Apples
   (b) =>
     spawnItem(
-      [{ id: "rluckblock:apple", cout: randomNum(1, 3) }],
+      [{ id: "rluckblock:luckly_apple", cout: randomNum(1, 3) }],
       b.location,
       b.dimension,
     ),

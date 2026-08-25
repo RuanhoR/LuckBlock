@@ -6,7 +6,7 @@
 <script lang="ts">
 import { BlockComponent } from "@mbler/mcx-component";
 
-const luckBlock = new BlockComponent({
+export const luckBlock = new BlockComponent({
   format: "1.21.80",
   id: "rluckblock:block",
   menu_category: { category: "construction" }
@@ -14,22 +14,13 @@ const luckBlock = new BlockComponent({
 
 luckBlock.setGeometry("minecraft:geometry.full_block");
 luckBlock.setLoot("loot_tables/empty.json");
-
-const materialInstances = {
-  north: { texture: "luckblock" },
-  south: { texture: "luckblock" },
-  east: { texture: "luckblock" },
-  west: { texture: "luckblock" },
-  up: { texture: "luckblock" },
-  down: { texture: "luckblock" }
-};
-luckBlock.setMaterialInstances(materialInstances);
+luckBlock.setMaterialInstances(Object.fromEntries(
+  (["down", "up", "west", "east", "south", "north"] as const).map(v => [v, { texture: "luckblock" }])
+));
 luckBlock.setItemVisual({
   geometry: "minecraft:geometry.full_block",
   material_instances: {
     "*": { texture: "luckblock", render_method: "opaque" }
   }
 });
-
-export { luckBlock };
 </script>

@@ -4,7 +4,7 @@ import { world } from "@minecraft/server";
 import "./DefineItems.mcx";
 import "./components/blocks.mcx";
 import "./components/recipes.mcx";
-import { version } from "./config";
+import { version } from "./../../package.json";
 import { registryCommand } from "@mbler/mcx";
 import { LuckBlockCore } from "./core/luckBlock";
 import { debugCommand } from "./command/vdebug";
@@ -14,4 +14,4 @@ registryCommand(debugCommand);
 registryCommand(giveLuckBlockCommand);
 // @ts-ignore
 createApp(app).mount(world);
-console.log(`LuckBlock ${version} success loaded`);
+console.log(`LuckBlock ${version} success loaded!`);

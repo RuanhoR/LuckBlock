@@ -14,16 +14,16 @@
   },
   "type": "module",
   "dependencies": {
-    "@mbler/mcx": "0.0.6",
+    "@mbler/mcx": "0.0.6-rc.1",
     "@minecraft/server": "2.9.0-beta.1.26.31-stable",
     "@minecraft/server-ui": "2.2.0-beta.1.26.31-stable",
     "@ojaang/be-vanilla-iddata": "1.26.40-rc.1"
   },
   "devDependencies": {
-    "@mbler/mcx-component": "0.0.3-rc.7",
-    "@mbler/mcx-core": "0.1.4",
+    "@mbler/mcx-component": "0.0.4-rc.1",
+    "@mbler/mcx-core": "1.1.5-dev.1",
     "cross-env": "^10.1.0",
-    "mbler": "0.2.14-rc.8",
+    "mbler": "0.3.1-dev.1",
     "mcx-tsc": "0.0.2-rc.2",
     "rolldown": "^1.1.0"
   }

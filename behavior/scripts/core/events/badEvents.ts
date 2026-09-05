@@ -1,3 +1,6 @@
+// The beta typings' VanillaEntityIdentifier misses some vanilla ids used
+// below, so the author's `as any` casts are kept deliberately.
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Dimension,
   EquipmentSlot,

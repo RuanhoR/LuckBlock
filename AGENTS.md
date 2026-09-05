@@ -1,6 +1,6 @@
 # LucklyBlock — Agent Guide
 
-Minecraft Bedrock addon (Luck Block). Built with [mbler](https://github.com/RuanhoR/mbler) + MCX DSL. No tests; no CI.
+Minecraft Bedrock addon (Luck Block). Built with [mbler](https://github.com/RuanhoR/mbler) + MCX DSL. Unit tests live in `tests/` (vitest); no CI.
 
 ## ⚠️ 包管理器：只用 pnpm
 
@@ -12,6 +12,9 @@ pnpm install            # 安装依赖（版本全部精确锁定，见下）
 pnpm type-check         # mcx-tsc 严格类型检查 —— 改动后必跑
 pnpm build              # release 构建，唯一会写 dist/ 与 dist.mcaddon 的命令
 pnpm dev-build          # 开发构建：写游戏 development_packs 目录（outGameOnDev），不碰 dist/
+pnpm lint               # ESLint：TS 源码 + .mcx（@mbler/eslint-plugin-mcx）；pnpm lint:fix 自动修复
+pnpm test               # vitest（tests/**/*.spec.ts）；@minecraft/server(+ui) 被别名到
+                        # tests/mocks/minecraft-server.ts（beta 运行时包无法在 Node 下加载）
 pnpm dev                # mbler watch
 
 # 验证顺序：改完 → pnpm type-check → pnpm build → 检查 dist/ 输出

@@ -17,7 +17,6 @@ import badEvents from "./events/badEvents";
 import { LoreParser } from "./loreParser";
 import { luckBlockTypeId, WorldDymicPropKeys } from "../config";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
-
 export class LuckBlockCore {
   public static async onBreak(block: Block, player: Player) {
     // don't clean luckBlock item, because loot null

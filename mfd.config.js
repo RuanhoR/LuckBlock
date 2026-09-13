@@ -9,6 +9,10 @@ export default defineConfig({
 
 一个简单的 Minecraft 基岩版**幸运方块**玩法模组，基于 [mcx-core](https://github.com/RuanhoR/mcx-core) 脚本构建。
 
+## 仓库
+
+GitHub: [LuckBlock](https://github.com/RuanhoR/LuckBlock)
+
 ## 安装
 
 选择与你的 Minecraft 版本匹配的 \`dist.mcaddon\` 下载后导入游戏即可。
@@ -16,6 +20,10 @@ export default defineConfig({
     en: `# Lucky Block
 
 A simple Minecraft Bedrock **Lucky Block** gameplay addon, built with [mcx-core](https://github.com/RuanhoR/mcx-core) scripts.
+
+## Repository
+
+GitHub: [LuckBlock](https://github.com/RuanhoR/LuckBlock)
 
 ## Install
 

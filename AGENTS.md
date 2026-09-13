@@ -16,6 +16,8 @@ pnpm lint               # ESLint：TS 源码 + .mcx（@mbler/eslint-plugin-mcx�
 pnpm test               # vitest（tests/**/*.spec.ts）；@minecraft/server(+ui) 被别名到
                         # tests/mocks/minecraft-server.ts（beta 运行时包无法在 Node 下加载）
 pnpm dev                # mbler watch
+pnpm exec mfd page      # 用 dist.mcaddon 重新生成静态下载页（输出 dist-page/）
+pnpm exec mfd serve     # 本地预览下载页（页面 + manifest + addon 端点）
 
 # 验证顺序：改完 → pnpm type-check → pnpm build → 检查 dist/ 输出
 ```
@@ -27,6 +29,13 @@ pnpm dev                # mbler watch
 - `@mbler/mcx-component@0.0.3-rc.1`
 
 升级任一包前先确认互相兼容（core rc.16 ↔ component 0.0.3.x ↔ types rc.8）。
+
+## MFD 下载页
+
+- `pnpm exec mfd page` — 以根目录 `dist.mcaddon` 为数据源重新生成静态下载页，输出 `dist-page/lucky-block/`（纯静态，gitignore，发布时整目录部署到任意静态托管）。
+- `pnpm exec mfd serve` — 本地预览：页面 + manifest + addon 下载端点。
+- 页面标题、MC 版本范围、双语 markdown 介绍都在 `mfd.config.js`，改文案只动这个文件。
+- 顺序：先 `pnpm build`（dist.mcaddon 仅 release 构建产出），再 `mfd page`，否则页面拿到的是旧包。
 
 ## Layout / ownership
 
